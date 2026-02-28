@@ -1,7 +1,7 @@
-streamlit
+'streamlit
 ultralytics
 easyocr
-opencv-python-headless
+opencv-python-headless==4.11.0.86
 pymupdf
 pandas
 numpy
@@ -10,3 +10,5 @@ sqlalchemy
 pyodbc
 torch
 torchvision
+
+--no-deps opencv-python
