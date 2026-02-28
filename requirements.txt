@@ -11,4 +11,4 @@ pyodbc
 torch
 torchvision
 
---no-deps opencv-python
+
