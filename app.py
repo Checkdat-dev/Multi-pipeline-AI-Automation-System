@@ -114,6 +114,8 @@ if uploaded_pdfs:
 
 if st.sidebar.button("Clear Workspace"):
     clear_selected_outputs()
+    st.session_state.pop("validation_df", None)
+    st.session_state.pop("validation_file", None)
 
     # 🔥 Reset uploader widget
     st.session_state["uploader_key"] += 1
@@ -169,20 +171,27 @@ if action == "Validate Drawings":
 
                 st.success("Validation Complete")
 
-                df_result = pd.read_excel(result_file, dtype=str, keep_default_na=False)
-                df_result = df_result[[c for c in VALID_COLUMNS if c in df_result.columns]]
+              df_result = pd.read_excel(result_file, dtype=str, keep_default_na=False)
+              df_result = df_result[[c for c in VALID_COLUMNS if c in df_result.columns]]
 
-                st.dataframe(df_result, use_container_width=True)
-
-                with open(result_file, "rb") as f:
-                    st.download_button(
-                        label="Download Validation Excel",
-                        data=f,
-                        file_name=Path(result_file).name
-                    )
+              st.session_state["validation_df"] = df_result
+              st.session_state["validation_file"] = result_file
 
             except Exception as e:
                 st.error(f"Pipeline Error: {str(e)}")
+    if "validation_df" in st.session_state:
+
+    df_result = st.session_state["validation_df"]
+    result_file = st.session_state["validation_file"]
+
+    st.dataframe(df_result, use_container_width=True)
+
+    with open(result_file, "rb") as f:
+        st.download_button(
+            label="Download Validation Excel",
+            data=f,
+            file_name=Path(result_file).name
+        )  
 
 # ==========================================================
 # VIEW STAMPS
