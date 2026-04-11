@@ -179,19 +179,17 @@ if action == "Validate Drawings":
 
             except Exception as e:
                 st.error(f"Pipeline Error: {str(e)}")
+    # ✅ SHOW RESULT ALWAYS
     if "validation_df" in st.session_state:
 
-        df_result = st.session_state["validation_df"]
-        result_file = st.session_state["validation_file"]
-    
-        st.dataframe(df_result, use_container_width=True)
-    
-        with open(result_file, "rb") as f:
+        st.dataframe(st.session_state["validation_df"], use_container_width=True)
+
+        with open(st.session_state["validation_file"], "rb") as f:
             st.download_button(
-                label="Download Validation Excel",
-                data=f,
-                file_name=Path(result_file).name
-            )  
+            label="Download Validation Excel",
+            data=f,
+            file_name=Path(st.session_state["validation_file"]).name
+            )
 
 # ==========================================================
 # VIEW STAMPS
