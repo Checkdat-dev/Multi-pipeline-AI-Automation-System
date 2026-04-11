@@ -41,7 +41,7 @@ Reset the workspace when
 
 ## Wake the app up if it's sleeping! It takes some time to load. :) Also change the theme to light for better visibility.
 
-👉 **[Open the Streamlit App](https://multi-pipeline-ai-automation-system-jq2fzpjxxhfuitwgmt3vsf.streamlit.app/)**
+👉 **[APPLICATION LINK](https://multi-pipeline-ai-automation-system-jq2fzpjxxhfuitwgmt3vsf.streamlit.app/)**
  
  
  Wake the app up if it's sleeping! It takes some time to load. :) Also change the theme to light for better visibility.needed.
