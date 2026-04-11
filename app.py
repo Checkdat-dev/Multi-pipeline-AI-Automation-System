@@ -171,8 +171,8 @@ if action == "Validate Drawings":
 
                 st.success("Validation Complete")
 
-              df_result = pd.read_excel(result_file, dtype=str, keep_default_na=False)
-              df_result = df_result[[c for c in VALID_COLUMNS if c in df_result.columns]]
+                df_result = pd.read_excel(result_file, dtype=str, keep_default_na=False)
+                df_result = df_result[[c for c in VALID_COLUMNS if c in df_result.columns]]
 
               st.session_state["validation_df"] = df_result
               st.session_state["validation_file"] = result_file
